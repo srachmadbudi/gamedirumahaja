@@ -149,10 +149,10 @@ int main() {
     getchar();
 
     int sp = 0, p_score = 0;
-    trap_game JT(n,name,simpangan,&counter);
-    printf("Hao %c\n",simpangan[0][0]);
+    trap_game JT(n,name,&simpangan,&counter);
+//    printf("Hao %c\n",simpangan[0][0]);
     Levels lvl;
-    Graph junggle(n,simpangan) ;
+    Graph junggle(n,&simpangan) ;
 
     while(counter<=5)
     {
@@ -165,7 +165,7 @@ int main() {
             junggle.redef_graph(n);
             JT.randomObstruction(c);
             junggle.init();
-            junggle.Cetak();
+//            junggle.Cetak();
             junggle.checkEdge();
             sp = junggle.minEdge(0,(n*n)-1);
 

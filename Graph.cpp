@@ -7,12 +7,14 @@ void Graph::Cetak() {
 //    this->simpangan[1][2]='B';
 }
 
-Graph::Graph(int n, char **simpangan_)
+Graph::Graph(int n, char ***simpangan_)
 {
+    simpangan_ptr = simpangan_;
     sp=0;
     this->nodes=n;
     adj=new vector<int>[n*n];
-    simpangan = simpangan_;
+    simpangan = *simpangan_;
+    *simpangan_ptr = simpangan;
 }
 
 void Graph::redef_graph(int n1)
@@ -68,6 +70,7 @@ void Graph::edge(int i,int j)
             add_edge((i*nodes)+j,(i*nodes)+(j+1));
         }
     }
+    *simpangan_ptr = simpangan;
 }
 
 int Graph::minEdge(int a, int b)

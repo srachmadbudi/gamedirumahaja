@@ -11,12 +11,13 @@ public:
     stack <pair<int,int>> S;
     int n , steps;
     char **simpangan;
+    char ***simpangan_ptr;
     int score;
     int kehidupan;
     int *counter_ptr;
     int counter;
 
-    trap_game(int n , string name, char **simpangan_, int *counter_);
+    trap_game(int n , string name, char ***simpangan_, int *counter_);
 
     void randomObstruction(double percent);
     void redefine(int n1);

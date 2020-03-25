@@ -13,8 +13,9 @@ public:
     int sp;
     int lp;
     int mod;
-    char **simpangan;
-    Graph(int, char**);
+    char** simpangan;
+    char*** simpangan_ptr;
+    Graph(int, char***);
 
     void Cetak();
     void redef_graph(int n1);

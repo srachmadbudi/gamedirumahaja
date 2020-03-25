@@ -1,1 +1,1 @@
-#dirumahaja
+use cmake to build CMakelist.txt

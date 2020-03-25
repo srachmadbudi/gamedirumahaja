@@ -1,8 +1,9 @@
 #include "Trap_game.h"
 
-trap_game::trap_game(int n , string name, char** simpangan_, int *counter_)
+trap_game::trap_game(int n , string name, char*** simpangan_, int *counter_)
 {
-    this->simpangan = simpangan_;
+//    this->simpangan = *simpangan_;
+    simpangan_ptr = simpangan_;
     this->n = n;
     this->score = 0;
     this->kehidupan =3;
@@ -17,22 +18,23 @@ trap_game::trap_game(int n , string name, char** simpangan_, int *counter_)
     simpangan = new char * [n];
 
     for (int i = 0; i < n; ++i ){
-        printf("simpang1 %d\n",i);
+//        printf("simpang1 %d\n",i);
         simpangan[i] = new char [n];
     }
 
     for(int i=0;i<n;i++)
     {
         for(int j=0;j<n;j++){
-            printf("simpang %d %d\n",i,j);
+//            printf("simpang %d %d\n",i,j);
             simpangan[i][j]=' ';
         }
     }
-    printf("KELUAR\n");
+//    printf("KELUAR\n");
     simpangan[0][0]='*';
     simpangan[n-1][n-1]='@';
-    simpangan_ = simpangan;
-    printf("KELUAR2\n");
+    *simpangan_ptr = simpangan;
+//    printf("KELUAR2\n");
+
 }
 
 void trap_game::randomObstruction(double percent)
@@ -49,6 +51,7 @@ void trap_game::randomObstruction(double percent)
             c--;
         }
     }
+    *simpangan_ptr = simpangan;
 }
 
 
@@ -69,6 +72,8 @@ void trap_game::redefine(int n1)
 
     simpangan[0][0]='*';
     simpangan[n-1][n-1]='@';
+
+    *simpangan_ptr = simpangan;
 }
 
 void trap_game::Gambar_simpangan()
@@ -102,6 +107,7 @@ void trap_game::Gambar_simpangan()
         cout<<"\n";
         j++;
     }
+    *simpangan_ptr = simpangan;
     cout<<"\n\n\n\n\n";
 }
 
@@ -339,6 +345,7 @@ int trap_game::move(int x,int y)
     }
 
     while(simpangan[x][y]!='@' && termin==0);
+    *simpangan_ptr = simpangan;
     return(termin);
 }
 
